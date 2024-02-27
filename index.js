@@ -2,6 +2,7 @@ const express = require("express");
 const ejs = require("ejs");
 const path = require("path");
 const qrCode = require("qrcode");
+// const exp = require("constants");
 
 const app = express();
 const port = process.env.port || 3000;
@@ -17,10 +18,16 @@ app.get("/", (req, res, next) => {
 });
 
 app.post("/scan", (req, res, next) => {
-    const startWithLetters = req.body.startWithLetters
-    const SerialNumberStart = req.body.SerialNumberStart
-    const SerialNumberEnd = req.body.SerialNumberEnd
-    console.log(startWithLetters, SerialNumberStart, SerialNumberEnd);
+  const startWithLetters = req.body.startWithLetters;
+  const SerialNumberStart = req.body.SerialNumberStart;
+  const SerialNumberEnd = req.body.SerialNumberEnd;
+  const scanObj = `${startWithLetters} , ${SerialNumberStart} , ${SerialNumberEnd}`;
+  qrCode.toDataURL(scanObj, (err, src) => {
+    // if (err) res.send("Something went wrong!!");
+    res.render("scan", {
+      qr_code: src,
+    });
+  });
 });
 
 app.listen(port, console.log(`Listening on port ${port}`));

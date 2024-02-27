@@ -10,10 +10,46 @@
 
 <body>
     <div class="">
-        <h2 class="text-center bg-red-200 py-[20px] text-3xl fon-semibold">QR code Generator</h2>
+        <h2 class="text-center bg-red-200 py-[20px] text-3xl font-semibold">QR code Generator</h2>
         <div class="container mx-auto">
             <div class="my-[20px]">
-                <form action=""></form>
+                <form action="/scan" method="POST" class="form">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
+                        <div class="flex flex-col gap-[12px]">
+                            <div>
+                                <h2>QR start With Letters</h2>
+                                <small>Example: ABC</small>
+                            </div>
+                            <input name="startWithLetters" class="border outline-none px-[10px] py-[5px]" type="text"
+                                placeholder="QR start With Letters">
+
+                        </div>
+                        <div class="flex flex-col gap-[12px]">
+                            <div>
+                                <h2>Serial Number Start</h2>
+                                <small>Example: 001</small>
+                            </div>
+                            <input name="SerialNumberStart" class="border outline-none px-[10px] py-[5px]" type="text"
+                                placeholder="Serial Number Start">
+                        </div>
+                        <div class="flex flex-col gap-[12px]">
+                            <div>
+                                <h2>Serial Number End</h2>
+                                <small>Example: 100</small>
+                            </div>
+                            <input name="SerialNumberEnd" class="border outline-none px-[10px] py-[5px]" type="text"
+                                placeholder="Serial Number End">
+                        </div>
+                    </div>
+                    <div class="text-end flex flex-col items-end mt-[10px]">
+                        <div class="flex flex-col gap-[10px]">
+                            <button type="submit"
+                                class="bg-red-200 py-[10px] px-[15px] font-semibold rounded-[10px]">Generate QR
+                                code</button>
+                            <button class="bg-red-200 py-[10px] px-[15px] font-semibold rounded-[10px]">send</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
